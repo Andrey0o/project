@@ -1,22 +1,24 @@
+# frozen_string_literal: true
+
+# Основная запись приложения
 class User < ApplicationRecord
-	scope :by_username, ->(username) { where(username:) if username.present? }
+  scope :by_username, ->(username) { where(username:) if username.present? }
 
-	validates :email, presence: true
+  validates :email, presence: true
 
-	def	test
-		self.update(password: self.password.split('').shuffle.join)
-	end
+  def	test
+    update(password: password.chars.shuffle.join)
+  end
 
-	def self.duplicate(user)
-		new_user = user.dup.attributes.slice('email', 'password')
+  def self.duplicate(user)
+    new_user = user.dup.attributes.slice('email', 'password')
 
-		saved = User.create(new_user)
-		
-		saved.test
-	end
+    saved = User.create(new_user)
 
-	def self.test_method
+    saved.test
+  end
 
-		by_username(nil)
-	end
+  def self.test_method
+    by_username(nil)
+  end
 end
