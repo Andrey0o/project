@@ -16,10 +16,7 @@ class User < ApplicationRecord
 	end
 
 	def self.test_method
-		debugger
 
 		by_username(nil)
-
-		debugger
 	end
 end
