@@ -6,7 +6,7 @@ module Api
       def show
         user = User.find(params[:id])
 
-        render json: user.as_json
+        render json: user.slice(:email, :password, :id).as_json
       end
     end
   end
