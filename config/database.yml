@@ -7,21 +7,13 @@ default: &default
   password: <%= ENV.fetch('POSTGRES_PASSWORD') %>
 
 development:
-  postgres:
-    <<: *default
-    database: test_project_development
+  <<: *default
+  database: test_project_development
 
 test:
-  postgres:
-    <<: *default
-    database: test_project_test
-
-stage:
-  postgres:
-    <<: *default
-    database: test_project_stage
+  <<: *default
+  database: test_project_test
 
 production:
-  postgres:
-    <<: *default
-    database: test_project_production
+  <<: *default
+  database: test_project_production
